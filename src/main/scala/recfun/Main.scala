@@ -16,13 +16,14 @@ object Main {
   def pascal(c: Int, r: Int): Int = {
 
     def calcRow(rowNumber: Int, prevRow: List[Int]): List[Int] =
-      if (rowNumber == r) prevRow else calcRow(rowNumber + 1, calc(List(0) ::: prevRow ::: List(0),List()))
-
+      if (rowNumber == r) prevRow
+      else calcRow(rowNumber + 1, calc(List(0) ::: prevRow ::: List(0),List()))
 
     def calc(row: List[Int], output: List[Int]):List[Int] =
-      if(row.length==1) output else calc(row.tail, output:::List(row.head+row(1)))
+      if(row.length==1) output
+      else calc(row.tail, output:::List(row.head+row(1)))
 
-    if (c == 0 || c == r) 1 else calcRow(0, List(1))(c)
+    calcRow(0, List(1))(c)
   }
 
   /**
